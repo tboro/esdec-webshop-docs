@@ -1,7 +1,7 @@
 ---
 title: API Reference
 
-language_tabs:
+language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - ruby
   - python
@@ -225,7 +225,7 @@ let max = api.kittens.delete(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint deletes a specific kitten.
 
 ### HTTP Request
 
