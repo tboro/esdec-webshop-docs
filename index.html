@@ -201,7 +201,7 @@
       <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;Examples&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="Examples">Examples</a>
         </div>
       <div id="toc" class="toc-list-h1">
           <li>
@@ -229,11 +229,14 @@
               </ul>
           </li>
           <li>
+            <a href="#using-the-app" class="toc-h1 toc-link" data-title="Using the app">Using the app</a>
+          </li>
+          <li>
             <a href="#populating-cart" class="toc-h1 toc-link" data-title="Populating cart">Populating cart</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Contact us for a Developer Key</a></li>
+            <li><a href='info@esdec.com'>Contact us for a Vendor Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -245,9 +248,23 @@
 
 <p>The integration is not dependent on any backend - the process can adapt to few common scenarios.</p>
 <h1 id='entering-the-calculator'>Entering the calculator</h1>
+<blockquote>
+<p>Example redirect</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;shop-session-id=32987abc"</span>
+</code></pre>
+<blockquote>
+<p>Embedding within iframe:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;iframe</span> <span class="na">style=</span><span class="s">"width: 1920px; height: 1080px;"</span>
+ <span class="na">src=</span><span class="s">"https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;shop-session-id=32987abc"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre>
 <p>It is enough either to redirect your webshop to a following URL, or embed it within an iframe.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://calculator.esdec.com/</code></p>
+<p><code>GET https://esdec.app.amsdard.io/</code> (test environment)</p>
+
+<p><code>GET https://calculator.esdec.com/</code> (production environment)</p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -259,18 +276,24 @@
 <tr>
 <td>vendor-uuid</td>
 <td>string</td>
-<td>Personal integration key - used to associate the webshop with our calculator.</td>
+<td>Personal integration key - used to associate the webshop with our calculator. You will receive it from us.</td>
 </tr>
 <tr>
 <td>shop-session-id</td>
 <td>string</td>
-<td>Current user webshop user session.</td>
+<td>Current webshop user session.</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
 You must provide all query parameters in order to enter the calculator properly.
 </aside>
+<h1 id='using-the-app'>Using the app</h1>
+<p>Currently it is required for the user to have an account in the calculator.
+If you would like to automate registration/authentication, please make sure your webshop can work as an Oauth2 / SAML identity provider.
+In any other case, please contact us to setup a suitable solution.</p>
+
+<p>Watch general usage <a href="https://www.youtube.com/watch?v=HiZyaXoLbbM">tutorial video</a>.</p>
 <h1 id='populating-cart'>Populating cart</h1>
 <blockquote>
 <p>The calculator will call your redirectUri with following JSON structure using AJAX:</p>
@@ -291,15 +314,31 @@ You must provide all query parameters in order to enter the calculator properly.
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
+<blockquote>
+<p>When using iframe integration, product list needs to be picked up by the webshop window:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Sample expected event.data value:</span>
+<span class="c1">// event.data = '{</span>
+<span class="c1">//  "session":{"id":"32987abc","moment":"2017-07-26 13:18:20","language":"NL"},</span>
+<span class="c1">//  "items": [{"code":"100-0000","count":"20"},{"code":"100-0001","count":"10"}]</span>
+<span class="c1">// }';</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+</code></pre>
 <p>Once an end-user finishes building the project, the last step is to place ClickFit EVO products in the cart.
 This is by default managed by an AJAX call to a special endpoint (named <code>redirectUri</code>) provided by your webshop.</p>
+
+<p>When calculator is situated within an iframe, a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage">postMessage</a> mechanism will be used to send the products back to the webshop scope.</p>
 
 <aside class="warning">Make sure you have <a href="https://enable-cors.org/">CORS</a> enabled for calculator.esdec.com domain.</aside>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="Examples">Examples</a>
           </div>
       </div>
     </div>
