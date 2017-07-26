@@ -2,14 +2,15 @@
 title: ClickFit EVO webshop integration
 
 language_tabs:
-  - javascript
+  - Examples
 
 toc_footers:
-  - <a href='#'>Contact us for a Developer Key</a>
+  - <a href='info@esdec.com'>Contact us for a Vendor Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - entering
+  - using
   - leaving
 
 search: false
