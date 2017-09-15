@@ -1,4 +1,4 @@
-# Entering the calculator
+# Entering the calculator I
 
 > Example redirect
 
@@ -14,7 +14,7 @@ curl "https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39d
 </iframe>
 ```
 
-It is enough either to redirect your webshop to a following URL, or embed it within an iframe.
+In this section the simplified approach is described. It is enough either to redirect your webshop to a following URL, or embed it within an iframe.
 
 ### HTTP Request
 
