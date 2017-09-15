@@ -218,18 +218,32 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#entering-the-calculator" class="toc-h1 toc-link" data-title="Entering the calculator">Entering the calculator</a>
+            <a href="#using-the-app" class="toc-h1 toc-link" data-title="Using the app">Using the app</a>
+          </li>
+          <li>
+            <a href="#entering-the-calculator-i" class="toc-h1 toc-link" data-title="Entering the calculator I">Entering the calculator I</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="Entering the calculator">HTTP Request</a>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="Entering the calculator I">HTTP Request</a>
                   </li>
                   <li>
-                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Entering the calculator">Query Parameters</a>
+                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Entering the calculator I">Query Parameters</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#using-the-app" class="toc-h1 toc-link" data-title="Using the app">Using the app</a>
+            <a href="#entering-the-calculator-ii" class="toc-h1 toc-link" data-title="Entering the calculator II">Entering the calculator II</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisites" class="toc-h2 toc-link" data-title="Entering the calculator II">Prerequisites</a>
+                  </li>
+                  <li>
+                    <a href="#required-endpoints" class="toc-h2 toc-link" data-title="Entering the calculator II">Required endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#embedding-the-flow" class="toc-h2 toc-link" data-title="Entering the calculator II">Embedding the flow</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#populating-cart" class="toc-h1 toc-link" data-title="Populating cart">Populating cart</a>
@@ -247,7 +261,14 @@
 <p>Welcome to the webshop integration documentation for Esdec ClickFit EVO product. You can use this guide for integrating our calculator as a middleware in the process of selecting &amp; purchasing appropriate products in your webshop.</p>
 
 <p>The integration is not dependent on any backend - the process can adapt to few common scenarios.</p>
-<h1 id='entering-the-calculator'>Entering the calculator</h1>
+<h1 id='using-the-app'>Using the app</h1>
+<p>Currently it is required for the user to have an account in the calculator. The integration without skipping the extra registration dialog is described in <em>Entering the calculator I</em> section.</p>
+
+<p>If you would like to automate registration/authentication, please make sure your webshop can work as an OAuth2 identity provider. Then refer to <em>Entering the calculator II</em> section where the process is described in details.
+In any other case, please contact us to setup a suitable solution.</p>
+
+<p>Watch general usage <a href="https://www.youtube.com/watch?v=HiZyaXoLbbM">tutorial video</a>.</p>
+<h1 id='entering-the-calculator-i'>Entering the calculator I</h1>
 <blockquote>
 <p>Example redirect</p>
 </blockquote>
@@ -260,7 +281,7 @@
  <span class="na">src=</span><span class="s">"https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;shop-session-id=32987abc"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/iframe&gt;</span>
 </code></pre>
-<p>It is enough either to redirect your webshop to a following URL, or embed it within an iframe.</p>
+<p>In this section the simplified approach is described. It is enough either to redirect your webshop to a following URL, or embed it within an iframe.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://esdec.app.amsdard.io/</code> (test environment)</p>
 
@@ -288,12 +309,168 @@
 <aside class="notice">
 You must provide all query parameters in order to enter the calculator properly.
 </aside>
-<h1 id='using-the-app'>Using the app</h1>
-<p>Currently it is required for the user to have an account in the calculator.
-If you would like to automate registration/authentication, please make sure your webshop can work as an Oauth2 / SAML identity provider.
-In any other case, please contact us to setup a suitable solution.</p>
+<h1 id='entering-the-calculator-ii'>Entering the calculator II</h1>
+<p>In this section the OAuth2 approach is described. This integration allows the webshop user to confirm their identity instead of having to create an account manually.</p>
+<h2 id='prerequisites'>Prerequisites</h2>
+<p>Both webshop and Esdec calculator require known client_id &amp; client_secret pair. For the purpose of this documentation following values will be used:</p>
 
-<p>Watch general usage <a href="https://www.youtube.com/watch?v=HiZyaXoLbbM">tutorial video</a>.</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>amsterdamstandard.com</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>ThisMustBeASecretValue</td>
+</tr>
+<tr>
+<td>vendor-uuid</td>
+<td>492d0cef-5427-4ed8-b12d-169ef39dd871</td>
+</tr>
+</tbody></table>
+
+<p>A <code>vendor-uuid</code> value will be delivered by Esdec - it is an internal key of the webshop integration.</p>
+<h2 id='required-endpoints'>Required endpoints</h2>
+<p>As the webshop is the OAuth2 identity provider, it is expected there are 3 endpoints available:</p>
+<h3 id='request-token-provider'>Request token provider</h3>
+<blockquote>
+<p>Open following link in a browser:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>https://webshop.com/oauth2/authorize?client_id<span class="o">=</span>amsterdamstandard.com&amp;redirect_uri<span class="o">=</span>https://esdec.app.amsdard.io/?vendor-uuid<span class="o">=</span>492d0cef-5427-4ed8-b12d-169ef39dd871&amp;state<span class="o">=</span>oauth2&amp;response_type<span class="o">=</span>code
+</code></pre>
+<blockquote>
+<p>After user confirmation, you will be redirected to following URL:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://esdec.app.amsdard.io/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;code=5df345a5cc3a1e73f6a2085d4e78d42dcc564043&amp;state=oauth2
+</code></pre>
+<blockquote>
+<p>where <code>code</code> parameter value is the token used for requesting access token.</p>
+</blockquote>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET https://webshop.com/oauth2/authorize</code></p>
+<h4 id='query-parameters'>Query Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>Prerequisite value</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>string</td>
+<td>Calculator URL to redirect after the authorization is confirmed</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>Always &#39;oauth2&#39;</td>
+</tr>
+<tr>
+<td>response_type</td>
+<td>string</td>
+<td>Always &#39;code&#39;</td>
+</tr>
+</tbody></table>
+<h3 id='authorization-token-provider'>Authorization token provider</h3>
+<blockquote>
+<p>Retrieve access token:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+-H <span class="s2">"Authorization: Basic YW1zdGVyZGFtc3RhbmRhcmQuY29tOlRoaXNNdXN0QmVBU2VjcmV0VmFsdWU="</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+--data <span class="s2">"grant_type=authorization_code&amp;code=5df345a5cc3a1e73f6a2085d4e78d42dcc564043&amp;redirect_uri=https://esdec.app.amsdard.io/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;state=oauth2"</span> <span class="se">\</span>
+<span class="s2">"https://webshop.com/oauth2/token"</span>
+</code></pre>
+<blockquote>
+<p>Minimal response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e3f5dda78695d070877aa0b21ccebdab88b50980e6e61618e76d22821c5d75e"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST https://webshop.com/oauth2/token</code></p>
+
+<p>Following extra headers are required:</p>
+
+<ul>
+<li>Basic authorization - based on <code>client_id</code> &amp; <code>client_secret</code> pair</li>
+<li>Content Type - POST params are URLencoded</li>
+</ul>
+<h4 id='post-parameters'>POST Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>string</td>
+<td>Always &#39;authorization_code&#39;</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>Request token code received from the browser redirect</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>string</td>
+<td>Calculator URL to redirect after the authorization is confirmed</td>
+</tr>
+</tbody></table>
+<h3 id='identity-provider'>Identity provider</h3>
+<blockquote>
+<p>Get user identity for access token:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://webshop.com/oauth2/resource/identity?access_token=1e3f5dda78695d070877aa0b21ccebdab88b50980e6e61618e76d22821c5d75e"</span>
+</code></pre>
+<blockquote>
+<p>Minimal response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da39a3ee5e6b4b0d3255bfef95601890afd80709@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint should provide e-mail address (and/or other data about the customer).</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>GET https://webshop.com/oauth2/resource/identity</code></p>
+<h4 id='query-parameters-2'>Query Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>Authorization token received in the previous call</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The e-mail might or might not be exposed directly - this depends on the integration agreement with Esdec. At least a unique e-mail hash per-customer is required.
+</aside>
+<h2 id='embedding-the-flow'>Embedding the flow</h2>
+<p>It is enough that the webshop embeds the <code>Token request provider</code> URL where suitable. Please contact us providing <code>client_id</code> &amp; <code>client_secret</code> values, and base URLs of all of the 3 endpoints described in this chapter.</p>
+
+<aside class="notice">
+If you find this guide confusing, refer to: <a href="https://aaronparecki.com/oauth-2-simplified/">Aaron Parecki's blog post</a> where a similar approach is explained.
+</aside>
 <h1 id='populating-cart'>Populating cart</h1>
 <blockquote>
 <p>The calculator will call your redirectUri with following JSON structure using AJAX:</p>
