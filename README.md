@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/slatedocs/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
-  <a href="https://travis-ci.com/slatedocs/slate"><img src="https://travis-ci.com/slatedocs/slate.svg?branch=master" alt="Build Status"></a>
+  <a href="https://github.com/slatedocs/slate/actions?query=workflow%3ABuild+branch%3Amaster"><img src="https://github.com/slatedocs/slate/workflows/Build/badge.svg?branch=master" alt="Build Status"></a>
 </p>
 
 <p align="center">Slate helps you create beautiful, intelligent, responsive API documentation.</p>
@@ -29,7 +29,7 @@ Features
 
 * **RTL Support** Full right-to-left layout for RTL languages such as Arabic, Persian (Farsi), Hebrew etc.
 
-Getting started with Slate is super easy! Simply fork this repository and follow the instructions below. Or, if you'd like to check out what Slate is capable of, take a look at the [sample docs](https://slatedocs.github.io/slate/).
+Getting started with Slate is super easy! Simply press the green "use this template" button above and follow the instructions below. Or, if you'd like to check out what Slate is capable of, take a look at the [sample docs](https://slatedocs.github.io/slate/).
 
 Getting Started with Slate
 ------------------------------
@@ -44,10 +44,11 @@ You're going to need:
 
 ### Getting Set Up
 
-1. Fork this repository on GitHub.
-2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/slate.git`
-3. `cd slate`
-4. Initialize and start Slate. You can either do this locally, or with Vagrant:
+1. Press the green "use this template" button at the top of this page.
+2. Follow the instructions to create a new copy of the Slate repository.
+3. Clone your repository (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/slate.git`
+4. `cd slate`
+5. Initialize and start Slate. You can either do this locally, or with Vagrant:
 
 ```shell
 # either run this to run locally
@@ -90,7 +91,7 @@ You can view more in [the list on the wiki](https://github.com/slatedocs/slate/w
 Questions? Need Help? Found a bug?
 --------------------
 
-If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the developer, please feel free to [start a thread in our Spectrum community](https://spectrum.chat/slate)!
+If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the developer, please feel free to [start a thread in our Discussions tab](https://github.com/slatedocs/slate/discussions)!
 
 Found a bug with upstream Slate? Go ahead and [submit an issue](https://github.com/slatedocs/slate/issues). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
 
