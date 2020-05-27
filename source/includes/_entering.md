@@ -27,6 +27,7 @@ In this section the simplified approach is described. It is enough either to red
 Parameter | Type | Description
 --------- | ---- | -----------
 vendor-uuid | string | Personal integration key - used to associate the webshop with our calculator. You will receive it from us.
+locale | string | Preferred language version, for example: nl.
 shop-session-id | string | Current webshop user session.
 
 <aside class="notice">

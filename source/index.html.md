@@ -21,5 +21,5 @@ search: false
 
 Welcome to the webshop integration documentation for Esdec ClickFit EVO product. You can use this guide for integrating our calculator as a middleware in the process of selecting & purchasing appropriate products in your webshop.
 
-The integration is not dependent on any backend - the process can adapt to few common scenarios.
+The integration process can adapt to a few common scenarios.
 
