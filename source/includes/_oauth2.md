@@ -106,11 +106,18 @@ This endpoint should provide e-mail address (and/or other data about the custome
 
 `GET https://webshop.com/oauth2/resource/identity`
 
-#### Query Parameters
+The token received  in the previous call will be passed to the endpoint in one of 2 ways:
 
-Parameter | Type | Description
---------- | ---- | -----------
-access_token | string | Authorization token received in the previous call
+* request header
+```
+Authorization: Bearer <access_token>
+```
+
+* GET parameter "access_token"
+
+<aside class="notice">
+Both variants cannot be used at the same time within the same vendor. In you prefer to the second identity request variant (token passed as query parameter access_token) please let us know as it has to be enabled in the vendor settings. 
+</aside>
 
 <aside class="notice">
 The e-mail might or might not be exposed directly - this depends on the integration agreement with Esdec. At least a unique e-mail hash per-customer is required.
