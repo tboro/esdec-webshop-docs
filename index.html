@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ClickFit EVO webshop integration</title>
+    <title>API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,16 +141,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -165,7 +162,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -176,6 +173,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,326 +196,308 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+    <link href="stylesheets/screen-0a7c4629.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-c427a123.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;Examples&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-1e815a84.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="Examples">Examples</a>
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
-      <div id="toc" class="toc-list-h1">
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#using-the-app" class="toc-h1 toc-link" data-title="Using the app">Using the app</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#entering-the-calculator-i" class="toc-h1 toc-link" data-title="Entering the calculator I">Entering the calculator I</a>
+            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="Entering the calculator I">HTTP Request</a>
+                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
                   </li>
                   <li>
-                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Entering the calculator I">Query Parameters</a>
+                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#entering-the-calculator-ii" class="toc-h1 toc-link" data-title="Entering the calculator II">Entering the calculator II</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#prerequisites" class="toc-h2 toc-link" data-title="Entering the calculator II">Prerequisites</a>
-                  </li>
-                  <li>
-                    <a href="#required-endpoints" class="toc-h2 toc-link" data-title="Entering the calculator II">Required endpoints</a>
-                  </li>
-                  <li>
-                    <a href="#embedding-the-flow" class="toc-h2 toc-link" data-title="Entering the calculator II">Embedding the flow</a>
-                  </li>
-              </ul>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
-          <li>
-            <a href="#populating-cart" class="toc-h1 toc-link" data-title="Populating cart">Populating cart</a>
-          </li>
-      </div>
+      </ul>
         <ul class="toc-footer">
-            <li><a href='info@esdec.com'>Contact us for a Vendor Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the webshop integration documentation for Esdec ClickFit EVO product. You can use this guide for integrating our calculator as a middleware in the process of selecting &amp; purchasing appropriate products in your webshop.</p>
+<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
 
-<p>The integration is not dependent on any backend - the process can adapt to few common scenarios.</p>
-<h1 id='using-the-app'>Using the app</h1>
-<p>Currently it is required for the user to have an account in the calculator. The integration without skipping the extra registration dialog is described in <em>Entering the calculator I</em> section.</p>
+<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>If you would like to automate registration/authentication, please make sure your webshop can work as an OAuth2 identity provider. Then refer to <em>Entering the calculator II</em> section where the process is described in details.
-In any other case, please contact us to setup a suitable solution.</p>
-
-<p>Watch general usage <a href="https://www.youtube.com/watch?v=HiZyaXoLbbM">tutorial video</a>.</p>
-<h1 id='entering-the-calculator-i'>Entering the calculator I</h1>
+<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>Example redirect</p>
+<p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;shop-session-id=32987abc"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
 <blockquote>
-<p>Embedding within iframe:</p>
+<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;iframe</span> <span class="na">style=</span><span class="s">"width: 1920px; height: 1080px;"</span>
- <span class="na">src=</span><span class="s">"https://calculator.esdec.com/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;shop-session-id=32987abc"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/iframe&gt;</span>
-</code></pre>
-<p>In this section the simplified approach is described. It is enough either to redirect your webshop to a following URL, or embed it within an iframe.</p>
+
+<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+
+<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: meowmeowmeow</code></p>
+
+<aside class="notice">
+You must replace <code>meowmeowmeow</code> with your personal API key.
+</aside>
+<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all kittens.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://esdec.app.amsdard.io/</code> (test environment)</p>
-
-<p><code>GET https://calculator.esdec.com/</code> (production environment)</p>
+<p><code>GET http://example.com/api/kittens</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>vendor-uuid</td>
-<td>string</td>
-<td>Personal integration key - used to associate the webshop with our calculator. You will receive it from us.</td>
+<td>include_cats</td>
+<td>false</td>
+<td>If set to true, the result will also include cats.</td>
 </tr>
 <tr>
-<td>shop-session-id</td>
-<td>string</td>
-<td>Current webshop user session.</td>
+<td>available</td>
+<td>true</td>
+<td>If set to false, the result will include kittens that have already been adopted.</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-You must provide all query parameters in order to enter the calculator properly.
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
 </aside>
-<h1 id='entering-the-calculator-ii'>Entering the calculator II</h1>
-<p>In this section the OAuth2 approach is described. This integration allows the webshop user to confirm their identity instead of having to create an account manually.</p>
-<h2 id='prerequisites'>Prerequisites</h2>
-<p>Both webshop and Esdec calculator require known client_id &amp; client_secret pair. For the purpose of this documentation following values will be used:</p>
+<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>client_id</td>
-<td>amsterdamstandard.com</td>
-</tr>
-<tr>
-<td>client_secret</td>
-<td>ThisMustBeASecretValue</td>
-</tr>
-<tr>
-<td>vendor-uuid</td>
-<td>492d0cef-5427-4ed8-b12d-169ef39dd871</td>
-</tr>
-</tbody></table>
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<p>A <code>vendor-uuid</code> value will be delivered by Esdec - it is an internal key of the webshop integration.</p>
-<h2 id='required-endpoints'>Required endpoints</h2>
-<p>As the webshop is the OAuth2 identity provider, it is expected there are 3 endpoints available:</p>
-<h3 id='request-token-provider'>Request token provider</h3>
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div>
 <blockquote>
-<p>Open following link in a browser:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>https://webshop.com/oauth2/authorize?client_id<span class="o">=</span>amsterdamstandard.com&amp;redirect_uri<span class="o">=</span>https://esdec.app.amsdard.io/?vendor-uuid<span class="o">=</span>492d0cef-5427-4ed8-b12d-169ef39dd871&amp;state<span class="o">=</span>oauth2&amp;response_type<span class="o">=</span>code
-</code></pre>
-<blockquote>
-<p>After user confirmation, you will be redirected to following URL:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https://esdec.app.amsdard.io/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;code=5df345a5cc3a1e73f6a2085d4e78d42dcc564043&amp;state=oauth2
-</code></pre>
-<blockquote>
-<p>where <code>code</code> parameter value is the token used for requesting access token.</p>
-</blockquote>
-<h4 id='http-request'>HTTP Request</h4>
-<p><code>GET https://webshop.com/oauth2/authorize</code></p>
-<h4 id='query-parameters'>Query Parameters</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>client_id</td>
-<td>string</td>
-<td>Prerequisite value</td>
-</tr>
-<tr>
-<td>redirect_uri</td>
-<td>string</td>
-<td>Calculator URL to redirect after the authorization is confirmed</td>
-</tr>
-<tr>
-<td>state</td>
-<td>string</td>
-<td>Always &#39;oauth2&#39;</td>
-</tr>
-<tr>
-<td>response_type</td>
-<td>string</td>
-<td>Always &#39;code&#39;</td>
-</tr>
-</tbody></table>
-<h3 id='authorization-token-provider'>Authorization token provider</h3>
-<blockquote>
-<p>Retrieve access token:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
--H <span class="s2">"Authorization: Basic YW1zdGVyZGFtc3RhbmRhcmQuY29tOlRoaXNNdXN0QmVBU2VjcmV0VmFsdWU="</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
---data <span class="s2">"grant_type=authorization_code&amp;code=5df345a5cc3a1e73f6a2085d4e78d42dcc564043&amp;redirect_uri=https://esdec.app.amsdard.io/?vendor-uuid=492d0cef-5427-4ed8-b12d-169ef39dd871&amp;state=oauth2"</span> <span class="se">\</span>
-<span class="s2">"https://webshop.com/oauth2/token"</span>
-</code></pre>
-<blockquote>
-<p>Minimal response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e3f5dda78695d070877aa0b21ccebdab88b50980e6e61618e76d22821c5d75e"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='http-request-2'>HTTP Request</h4>
-<p><code>POST https://webshop.com/oauth2/token</code></p>
+</span></code></pre></div>
+<p>This endpoint retrieves a specific kitten.</p>
 
-<p>Following extra headers are required:</p>
-
-<ul>
-<li>Basic authorization - based on <code>client_id</code> &amp; <code>client_secret</code> pair</li>
-<li>Content Type - POST params are URLencoded</li>
-</ul>
-<h4 id='post-parameters'>POST Parameters</h4>
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>grant_type</td>
-<td>string</td>
-<td>Always &#39;authorization_code&#39;</td>
-</tr>
-<tr>
-<td>code</td>
-<td>string</td>
-<td>Request token code received from the browser redirect</td>
-</tr>
-<tr>
-<td>redirect_uri</td>
-<td>string</td>
-<td>Calculator URL to redirect after the authorization is confirmed</td>
+<td>ID</td>
+<td>The ID of the kitten to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='identity-provider'>Identity provider</h3>
+<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
+  <span class="nt">-X</span> DELETE
+  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div>
 <blockquote>
-<p>Get user identity for access token:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://webshop.com/oauth2/resource/identity?access_token=1e3f5dda78695d070877aa0b21ccebdab88b50980e6e61618e76d22821c5d75e"</span>
-</code></pre>
-<blockquote>
-<p>Minimal response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da39a3ee5e6b4b0d3255bfef95601890afd80709@example.com"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint should provide e-mail address (and/or other data about the customer).</p>
-<h4 id='http-request-3'>HTTP Request</h4>
-<p><code>GET https://webshop.com/oauth2/resource/identity</code></p>
-<h4 id='query-parameters-2'>Query Parameters</h4>
+</span></code></pre></div>
+<p>This endpoint deletes a specific kitten.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>access_token</td>
-<td>string</td>
-<td>Authorization token received in the previous call</td>
+<td>ID</td>
+<td>The ID of the kitten to delete</td>
 </tr>
 </tbody></table>
-
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
-The e-mail might or might not be exposed directly - this depends on the integration agreement with Esdec. At least a unique e-mail hash per-customer is required.
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
-<h2 id='embedding-the-flow'>Embedding the flow</h2>
-<p>It is enough that the webshop embeds the <code>Token request provider</code> URL where suitable. Please contact us providing <code>client_id</code> &amp; <code>client_secret</code> values, and base URLs of all of the 3 endpoints described in this chapter.</p>
 
-<aside class="notice">
-If you find this guide confusing, refer to: <a href="https://aaronparecki.com/oauth-2-simplified/">Aaron Parecki's blog post</a> where a similar approach is explained.
-</aside>
-<h1 id='populating-cart'>Populating cart</h1>
-<blockquote>
-<p>The calculator will call your redirectUri with following JSON structure using AJAX:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"session"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shop-session-id"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">provided</span><span class="w"> </span><span class="err">earlier</span><span class="w">
-    </span><span class="s2">"moment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy-MM-dd HH:mm:ss"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[A-Z]{2}"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">language</span><span class="w"> </span><span class="err">used</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">calculator</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">".+"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">SKU</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">product</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">webshop</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\\</span><span class="s2">d+"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">items</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">more</span><span class="w"> </span><span class="err">products...</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<p>The Kittn API uses the following error codes:</p>
 
-</span></code></pre>
-<blockquote>
-<p>When using iframe integration, product list needs to be picked up by the webshop window:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="c1">// Sample expected event.data value:</span>
-<span class="c1">// event.data = '{</span>
-<span class="c1">//  "session":{"id":"32987abc","moment":"2017-07-26 13:18:20","language":"NL"},</span>
-<span class="c1">//  "items": [{"code":"100-0000","count":"20"},{"code":"100-0001","count":"10"}]</span>
-<span class="c1">// }';</span>
-
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
-<span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
-</code></pre>
-<p>Once an end-user finishes building the project, the last step is to place ClickFit EVO products in the cart.
-This is by default managed by an AJAX call to a special endpoint (named <code>redirectUri</code>) provided by your webshop.</p>
-
-<p>When calculator is situated within an iframe, a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage">postMessage</a> mechanism will be used to send the products back to the webshop scope.</p>
-
-<aside class="warning">Make sure you have <a href="https://enable-cors.org/">CORS</a> enabled for calculator.esdec.com domain.</aside>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="Examples">Examples</a>
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
