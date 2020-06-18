@@ -116,7 +116,7 @@ Authorization: Bearer <access_token>
 * GET parameter "access_token"
 
 <aside class="notice">
-Both variants cannot be used at the same time within the same vendor. In you prefer to the second identity request variant (token passed as query parameter access_token) please let us know as it has to be enabled in the vendor settings. 
+Both variants cannot be used at the same time within the same vendor. The second identity request variant (token passed as query parameter access_token) can be enabled in the vendor settings.
 </aside>
 
 <aside class="notice">
